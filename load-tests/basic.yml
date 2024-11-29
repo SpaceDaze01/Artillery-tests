@@ -1,17 +1,23 @@
 config:
   target: http://127.0.0.1:4000
+  engines:
+    playwright:
+      launchOptions:
+        headless: true
+        #slowMo: 300
+  processor: './mainTest.spec.cjs'
   phases:
-    - duration: 10
+    - duration: 2
       arrivalRate: 1
-      rampTo: 5
+      rampTo: 1
       name: Warm up phase
-    - duration: 10
-      arrivalRate: 5
-      rampTo: 10
+    - duration: 2
+      arrivalRate: 1
+      rampTo: 1
       name: Ramp up load
-    - duration: 10
-      arrivalRate: 10
-      rampTo: 30np
+    - duration: 2
+      arrivalRate: 1
+      rampTo: 1
       name: Spike phase
   # Load & configure a couple of useful plugins
   # https://docs.art/reference/extensions
@@ -26,12 +32,6 @@ config:
       - http.response_time.p99: 100
       - http.response_time.p95: 75
 scenarios:
-  - flow:
-      - loop:
-          - get:
-              url: "/kategori/frukt-och-gront"
-          - get:
-              url: "/kategori/blommor-och-tradgard"
-          - get:
-              url: "/kategori/apotek"
-        count: 100
+  - name: 'playwright user flow'
+    engine: playwright
+    testFunction: 'mainTest'
