@@ -1,15 +1,80 @@
 # Artillery and playwright
+In our test "mainTest" we tested all the following:
+Choose two different products (with image and info about the products).
+Go through one subcategory.
+Go through all categories.
+Go through all sorting options (populärast, A-Ö, Ö-A, pris: billigast till dyrast, pris: dyrast till billigast, jämnförspris: billigast till dyrast, jämnförspris: dyrast till billigast)."
+Change page.
 
-# info
+# info about running the test with playwright and Artillery
+Write following in the terminal to install playwright:
+npm init playwright@latest (for the latest version of playwright)
+
+We needed to add following extensions:
+-Artillery for VS Code
+-Playwright Test for VSCode
+
+We used different commands to run the tests:
+-npm run build (for Artillery)
+-npm run backend (for Artillery)
+-npx playwright test
+-npm run load-test-basic (Artillery, run test file)
+
+We only used one network server "chronium" to run our tests.
+We tested with slowMo in "basic.yml" file to see the process, but then we uncommented.
+When we recorded a new test then it went in the "e2e" map but then we moved it to the "load-tests" map. 
+
+When installing playwright we selected the following options:
+-Chrominum
+-Use javascript
+
+
+# basic.yml file
+We added and changed the following files to the basic.yml file:
+
+config:
+  target: http://127.0.0.1:4000
+  engines:
+    playwright:
+      launchOptions:
+        headless: true
+        #slowMo: 300
+  processor: './mainTest.spec.cjs'
+  phases:
+    - duration: 2
+      arrivalRate: 1
+      rampTo: 1
+      name: Warm up phase
+    - duration: 2
+      arrivalRate: 1
+      rampTo: 1
+      name: Ramp up load
+    - duration: 2
+      arrivalRate: 1
+      rampTo: 1
+      name: Spike phase
+  # Load & configure a couple of useful plugins
+  # https://docs.art/reference/extensions
+  plugins:
+    ensure: {}
+    apdex: {}
+    metrics-by-endpoint: {}
+  apdex:
+    threshold: 100
+  ensure:
+    thresholds:
+      - http.response_time.p99: 100
+      - http.response_time.p95: 75
+scenarios:
+  - name: 'playwright user flow'
+    engine: playwright
+    testFunction: 'mainTest'
 
 # test
+We did a test (mainTest) that tested all the functions for the website. 
 
 # problems
+We needed to make some changes for the test to show up in the "test explorer", instead of using "require" we used "module.exports" and did an "async function" for the test. Also we renamed it to a cjs file. 
 
 
-# facit 
-välj en produkt på första sidan (med bild och info: beskrivning osv)
-gå igenom två underkategorier
-gå igenom alla kategorier
-gå igenom alla sorteringar (ex populärast, A-Ö)
 
