@@ -1,6 +1,6 @@
 # Artillery and playwright
 In our test "mainTest" we tested all the following:
-Choose two different products (with image and info about the products).
+Choose two different products with image and info about the products (we needed to delete those steps because there was some technological issues with backend about Timeout).
 Go through one subcategory.
 Go through all categories.
 Go through all sorting options (populärast, A-Ö, Ö-A, pris: billigast till dyrast, pris: dyrast till billigast, jämnförspris: billigast till dyrast, jämnförspris: dyrast till billigast)."
@@ -76,6 +76,7 @@ We did a test (mainTest) that tested all the functions for the website.
 # problems
 We needed to make some changes for the test to show up in the "test explorer", instead of using "require" we used "module.exports" and did an "async function" for the test. Also we renamed it to a cjs file. 
 We had technical issues getting the backend up and running,so we worked together from one screen.
+We had some technological issues with backend. Then we did some changes in the code to make it run and work for both of us. Later during the workshop, we encountered another issue with the backend, but this time it was related to a timeout. To solve the problem we nedeed to take back the old backend code we used before, then we deleted the steps for the specific products in our mainTest. 
 
 
 
