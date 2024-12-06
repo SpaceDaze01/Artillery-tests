@@ -1,4 +1,3 @@
-
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -6,7 +5,6 @@ const app = express();
 const port = 4000;
 
 // Nedan tillagt för att få det att fungera för oss båda
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -46,7 +44,6 @@ app.get('*', (req, res) => {
 
 
   //Nedan ändrat för få det att fungera för oss båda,funkar inte det får man avkommentera det och kommentera ut det andra
-
 
   //res.sendFile(path.join(distFolder, 'index.html'));
   res.sendFile(path.resolve(__dirname, "../dist", 'index.html'));
