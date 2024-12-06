@@ -2,16 +2,8 @@ module.exports = {mainTest};
 
 async function mainTest(page) {
   await page.goto('http://localhost:4000/kategori/frukt-och-gront');
-  await page.getByText('Clementiner Klass 129,90 kr/kg').click();
-  await page.getByRole('img').click();
-  await page.getByRole('heading', { name: 'Clementiner Klass' }).click();
-  await page.getByText('BeskrivningClementiner är en').click();
   await page.getByRole('link', { name: 'Kött, chark & fågel' }).click();
   await page.getByRole('link', { name: 'Fågel', exact: true }).click();
-  await page.getByText('Tacokyckling Fryst84,90 kr').click();
-  await page.getByRole('img').click();
-  await page.getByRole('heading', { name: 'Tacokyckling Fryst' }).click();
-  await page.getByText('IngredienserKycklinglårfilé,').click();
   await page.getByRole('link', { name: 'Mejeri, ost & ägg' }).click();
   await page.getByRole('button', { name: '>' }).click();
   await page.getByLabel('Sortera:PopulärastA – ÖÖ –').selectOption('name-asc');

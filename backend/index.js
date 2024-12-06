@@ -1,12 +1,14 @@
+//Vi hade tekniska problem med backend, vi behövde göra ändringar men var tvugna att ändra tillbaka sen. 
+//Sedan fungerade allting igen och testet gick igenom! 
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
+//import { fileURLToPath } from 'url';
 const app = express();
 const port = 4000;
 
-// Nedan tillagt för att få det att fungera för oss båda
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+////Vi fick ändra tillbaka till den gamla koden för att få det att fungera igen då det uppstod problem med Timeout
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 
 // log all request to the server
@@ -30,10 +32,10 @@ app.get('/api/*', async (req, res) => {
 
 
 
-// Nedan ändrat för få det att fungera för oss båda,funkar inte det får man avkommentera det och kommentera ut det andra
+////Vi fick ändra tillbaka till den gamla koden för att få det att fungera igen då det uppstod problem med Timeout
 
-//const distFolder = path.join(import.meta.dirname, '..', 'dist');
-const distFolder = "../dist";
+const distFolder = path.join(import.meta.dirname, '..', 'dist');
+//const distFolder = "../dist";
 
 
 
@@ -43,10 +45,10 @@ app.use(express.static(distFolder));
 app.get('*', (req, res) => {
 
 
-  //Nedan ändrat för få det att fungera för oss båda,funkar inte det får man avkommentera det och kommentera ut det andra
+  //Vi fick ändra tillbaka till den gamla koden för att få det att fungera igen då det uppstod problem med Timeout
 
-  //res.sendFile(path.join(distFolder, 'index.html'));
-  res.sendFile(path.resolve(__dirname, "../dist", 'index.html'));
+  res.sendFile(path.join(distFolder, 'index.html'));
+  //res.sendFile(path.resolve(__dirname, "../dist", 'index.html'));
 
 
 
