@@ -25,7 +25,7 @@ We tested with slowMo in "basic.yml" file to see the process, but then we uncomm
 When we recorded a new test then it went in the "e2e" map but then we moved it to the "load-tests" map. 
 
 When installing playwright we selected the following options:
--Chrominum
+-Chromium
 -Use javascript
 
 
