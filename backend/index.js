@@ -1,15 +1,15 @@
-// backend
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const app = express();
 const port = 4000;
 
-// Nedan tillagt med hjälp av max för att fungera för oss två
-//#######################################################
+// Nedan tillagt för att få det att fungera för oss båda
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-//##########################################################
+
 
 // log all request to the server
 app.use((req, res, next) => {
@@ -32,11 +32,11 @@ app.get('/api/*', async (req, res) => {
 
 
 
-// Nedan ändrat med hjälp av max för att fungera för oss två funkar inte det får man avkommentera det och kommentera ut det andra
-//#######################################################
+// Nedan ändrat för få det att fungera för oss båda,funkar inte det får man avkommentera det och kommentera ut det andra
+
 //const distFolder = path.join(import.meta.dirname, '..', 'dist');
 const distFolder = "../dist";
-//###########################################################
+
 
 
 
@@ -45,11 +45,12 @@ app.use(express.static(distFolder));
 app.get('*', (req, res) => {
 
 
-  // Nedan ändrat med hjälp av max för att fungera för oss två funkar inte det får man avkommentera det och kommentera ut det andra
-  //#######################################################
+  //Nedan ändrat för få det att fungera för oss båda,funkar inte det får man avkommentera det och kommentera ut det andra
+
+
   //res.sendFile(path.join(distFolder, 'index.html'));
   res.sendFile(path.resolve(__dirname, "../dist", 'index.html'));
-  //#############################################################
+
 
 
 
